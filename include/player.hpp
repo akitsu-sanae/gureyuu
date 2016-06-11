@@ -1,0 +1,23 @@
+/*============================================================================
+  Copyright (C) 2015-2016 akitsu sanae
+  https://github.com/akitsu-sanae/osjul
+  Distributed under the Boost Software License, Version 1.0. (See accompanying
+  file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
+============================================================================*/
+
+
+#ifndef PLAYER_HPP
+#define PLAYER_HPP
+
+#include <mikayuu/drawable_object.hpp>
+#include <mikayuu/polygon.hpp>
+
+struct Player : public mkyu::DrawableObject {
+    explicit Player() {
+    }
+
+    void draw() const {
+    }
+};
+
+#endif
