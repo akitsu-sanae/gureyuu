@@ -10,6 +10,7 @@
 #define GAME_LAYER_HPP
 
 #include <mikayuu/layer.hpp>
+#include "player.hpp"
 
 struct GameLayer : public mkyu::Layer {
     GameLayer(mkyu::Scene const& p) :
@@ -20,18 +21,15 @@ struct GameLayer : public mkyu::Layer {
                 mkyu::Color{155, 255, 255, 155}
                 );
         tri->blend(mkyu::Polygon<3>::BlendMode::Alpha);
-        auto quad = std::make_shared<mkyu::Polygon<4>>(
-                std::array<mkyu::vec2d, 4>{{{1.0, -1.0}, {-0.5, -0.5}, {-1.0, 1.0}, {1.0, 1.0}}},
-                mkyu::Color{255, 155, 255, 155}
-                );
-        quad->blend(mkyu::Polygon<4>::BlendMode::Add);
-
         add_object(tri);
-        add_object(quad);
+
+        m_player = std::make_shared<Player>(parent().parent().keyboard());
+        add_object(m_player);
     }
 protected:
     void on_update() override {
     }
+    std::shared_ptr<Player> m_player;
 };
 
 #endif
