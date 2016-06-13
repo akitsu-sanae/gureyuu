@@ -16,9 +16,11 @@
 
 struct Player : public mkyu::DrawableObject {
     explicit Player(mkyu::Keyboard const& keyboard) :
+        mkyu::DrawableObject(mkyu::vec2d{0.0, 0.0}),
         m_keyboard(keyboard)
     {
         m_rect = std::make_shared<mkyu::Polygon<4>>(
+                mkyu::vec2d{0.0, 0.0},
                 std::array<mkyu::vec2d, 4>{{
                 {-0.1, -0.1}, {0.1, -0.1}, {0.1, 0.1}, {-0.1, 0.1}
                 }},
@@ -41,10 +43,7 @@ struct Player : public mkyu::DrawableObject {
             diff.x = -0.001;
         if (is_pushed(mkyu::Keyboard::KeyType::Right))
             diff.x = 0.001;
-        for (int i=0; i<4; i++) {
-            m_rect->position.at(i).x += diff.x;
-            m_rect->position.at(i).y += diff.y;
-        }
+        m_rect->position = m_rect->position + diff;
     }
 private:
     std::shared_ptr<mkyu::Polygon<4>> m_rect;

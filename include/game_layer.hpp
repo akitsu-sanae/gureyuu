@@ -17,6 +17,7 @@ struct GameLayer : public mkyu::Layer {
         mkyu::Layer(p)
     {
         auto tri = std::make_shared<mkyu::Polygon<3>>(
+                mkyu::vec2d{0.0, 0.0},
                 std::array<mkyu::vec2d, 3>{{{0.0, -0.5}, {0.5, 0.2}, {-0.5, 0.2}}},
                 mkyu::Color{155, 255, 255, 155}
                 );
