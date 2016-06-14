@@ -5,18 +5,14 @@
   file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
 ============================================================================*/
 
+#include "game.hpp"
+#include "game_scene.hpp"
 
-#ifndef GAME_LAYER_HPP
-#define GAME_LAYER_HPP
+Game::Game(mkyu::Game::Option const& option) :
+    mkyu::Game(option)
+{
+    change_scene(std::make_shared<Scene::GameScene>(*this));
+}
 
-#include <mikayuu/layer.hpp>
-#include "player.hpp"
-
-struct GameLayer : public mkyu::Layer {
-    GameLayer(mkyu::Scene const&);
-protected:
-    void on_update() override {}
-    std::shared_ptr<Player> m_player;
-};
-
-#endif
+void Game::on_update() {
+}

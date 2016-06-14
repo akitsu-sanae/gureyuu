@@ -13,8 +13,6 @@
 int main() {
     auto game = std::make_shared<Game>(mkyu::Game::Option{});
 
-    game->change_scene(std::make_shared<Scene::GameScene>(*game));
-
     while (game->update()) {
     }
 }

@@ -1,22 +1,18 @@
 /*============================================================================
   Copyright (C) 2015-2016 akitsu sanae
-  https://github.com/akitsu-sanae/osjul
+  https://github.com/akitsu-sanae/gureyuu
   Distributed under the Boost Software License, Version 1.0. (See accompanying
   file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
 ============================================================================*/
 
+#include "game_scene.hpp"
+#include "game_layer.hpp"
+using namespace Scene;
 
-#ifndef GAME_LAYER_HPP
-#define GAME_LAYER_HPP
+GameScene::GameScene(mkyu::Game const& p) :
+    mkyu::Scene(p)
+{
+    auto layer = std::make_shared<GameLayer>(*this);
+    add_layer(layer);
+}
 
-#include <mikayuu/layer.hpp>
-#include "player.hpp"
-
-struct GameLayer : public mkyu::Layer {
-    GameLayer(mkyu::Scene const&);
-protected:
-    void on_update() override {}
-    std::shared_ptr<Player> m_player;
-};
-
-#endif

@@ -10,17 +10,10 @@
 #define GAME_HPP
 
 #include <mikayuu/game.hpp>
-#include <mikayuu/polygon.hpp>
-#include <mikayuu/vec.hpp>
 
 struct Game : public mkyu::Game {
-    using mkyu::Game::Game;
-
-    void on_update() override {
-        if (keyboard().state(mkyu::Keyboard::KeyType::A) == mkyu::Keyboard::KeyState::Push) {
-            std::cout << "A" << std::endl;
-        }
-    }
+    explicit Game(mkyu::Game::Option const&);
+    void on_update() override;
 };
 
 #endif
