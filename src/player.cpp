@@ -26,17 +26,17 @@ Player::Player(mkyu::Keyboard const& keyboard) :
 
 void Player::draw() const {
         m_rect->draw();
-        auto is_pushed = [this](mkyu::Keyboard::KeyType type) {
-            return m_keyboard.state(type) == mkyu::Keyboard::KeyState::Push;
+        auto is_pushed = [this](mkyu::Keyboard::Type type) {
+            return m_keyboard.state(type) == mkyu::Keyboard::State::Push;
         };
         mkyu::vec2d diff = {};
-        if (is_pushed(mkyu::Keyboard::KeyType::Up))
+        if (is_pushed(mkyu::Keyboard::Type::Up))
             diff.y = 0.001;
-        if (is_pushed(mkyu::Keyboard::KeyType::Down))
+        if (is_pushed(mkyu::Keyboard::Type::Down))
             diff.y = -0.001;
-        if (is_pushed(mkyu::Keyboard::KeyType::Left))
+        if (is_pushed(mkyu::Keyboard::Type::Left))
             diff.x = -0.001;
-        if (is_pushed(mkyu::Keyboard::KeyType::Right))
+        if (is_pushed(mkyu::Keyboard::Type::Right))
             diff.x = 0.001;
         m_rect->position = m_rect->position + diff;
 }
