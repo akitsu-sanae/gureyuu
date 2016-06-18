@@ -5,26 +5,22 @@
   file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
 ============================================================================*/
 
-
-#ifndef PLAYER_HPP
-#define PLAYER_HPP
+#ifndef SHOT_HPP
+#define SHOT_HPP
 
 #include <mikayuu/drawable_object.hpp>
 #include <mikayuu/polygon.hpp>
-#include <mikayuu/keyboard.hpp>
 #include <memory>
 
-struct Player : public mkyu::DrawableObject
+struct Shot : public mkyu::DrawableObject
 {
-    explicit Player(mkyu::Keyboard const&);
-
+    explicit Shot(mkyu::vec2d const&);
     void draw() const override;
-    mkyu::vec2d position() const {
-        return m_rect->position;
+    bool is_alive() const {
+        return m_rect->position.y > -32.0;
     }
 private:
     std::shared_ptr<mkyu::Polygon<4>> m_rect;
-    mkyu::Keyboard const& m_keyboard;
 };
 
 #endif

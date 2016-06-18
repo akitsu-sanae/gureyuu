@@ -25,3 +25,11 @@ GameLayer::GameLayer(mkyu::Scene const& p) :
     add_object(m_player);
 }
 
+void GameLayer::on_update() {
+    using namespace mkyu;
+    if (this->parent().parent().keyboard().state(Keyboard::Type::Z) == Keyboard::State::Hold) {
+        auto shot = std::make_shared<Shot>(m_player->position());
+        m_shots.push_back(shot);
+        add_object(shot);
+    }
+}
