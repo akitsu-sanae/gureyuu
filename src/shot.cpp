@@ -13,7 +13,10 @@ Shot::Shot(mkyu::vec2d const& pos) :
     m_rect = std::make_shared<mkyu::Polygon<4>>(
             mkyu::vec2d{0.0, 0.0},
             std::array<mkyu::vec2d, 4> {{
-            {-0.05, -0.1}, {0.05, -0.1}, {0.05, 0.1}, {-0.05, 0.1}
+            mkyu::vec2d{-0.05, -0.1},
+            mkyu::vec2d{0.05, -0.1},
+            mkyu::vec2d{0.05, 0.1},
+            mkyu::vec2d{-0.05, 0.1}
             }},
             mkyu::Color{0, 200, 100, 100}
             );

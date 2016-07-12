@@ -15,7 +15,10 @@ GameLayer::GameLayer(mkyu::Scene const& p) :
 {
     auto tri = std::make_shared<mkyu::Polygon<3>>(
             mkyu::vec2d{0.0, 0.0},
-            std::array<mkyu::vec2d, 3>{{{0.0, -0.5}, {0.5, 0.2}, {-0.5, 0.2}}},
+            std::array<mkyu::vec2d, 3>{{
+            mkyu::vec2d{0.0, -0.5},
+            mkyu::vec2d{0.5, 0.2},
+            mkyu::vec2d{-0.5, 0.2}}},
             mkyu::Color{155, 255, 255, 155}
             );
     tri->blend(mkyu::Polygon<3>::BlendMode::Alpha);
