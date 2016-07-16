@@ -9,21 +9,22 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 
-#include <mikayuu/drawable_object.hpp>
+#include <mikayuu/object.hpp>
 #include <mikayuu/polygon.hpp>
 #include <mikayuu/keyboard.hpp>
-#include <memory>
+#include <mikayuu/utility.hpp>
 
-struct Player : public mkyu::DrawableObject
+struct Player : public mkyu::Object
 {
     explicit Player(mkyu::Keyboard const&);
 
+    void update() override;
     void draw() const override;
-    mkyu::vec2d position() const {
+    mkyu::vector2d position() const {
         return m_rect->position;
     }
 private:
-    std::shared_ptr<mkyu::Polygon<4>> m_rect;
+    mkyu::ptr<mkyu::Rectangle> m_rect;
     mkyu::Keyboard const& m_keyboard;
 };
 

@@ -5,15 +5,15 @@
   file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
 ============================================================================*/
 
-
-#include <iostream>
 #include "game.hpp"
 #include "game_scene.hpp"
 
 int main() {
     auto game = std::make_shared<Game>(mkyu::Game::Option{});
 
-    while (game->update()) {
+    while (game->is_alive()) {
+        game->update();
+        game->draw();
     }
 }
 

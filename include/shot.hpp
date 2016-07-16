@@ -8,19 +8,20 @@
 #ifndef SHOT_HPP
 #define SHOT_HPP
 
-#include <mikayuu/drawable_object.hpp>
+#include <mikayuu/object.hpp>
 #include <mikayuu/polygon.hpp>
-#include <memory>
+#include <mikayuu/utility.hpp>
 
-struct Shot : public mkyu::DrawableObject
+struct Shot final : public mkyu::Object
 {
-    explicit Shot(mkyu::vec2d const&);
+    explicit Shot(mkyu::vector2d const&);
+    void update() override;
     void draw() const override;
     bool is_alive() const {
         return m_rect->position.y > -32.0;
     }
 private:
-    std::shared_ptr<mkyu::Polygon<4>> m_rect;
+    mkyu::ptr<mkyu::Rectangle> m_rect;
 };
 
 #endif

@@ -11,28 +11,27 @@
 #include "player.hpp"
 
 Player::Player(mkyu::Keyboard const& keyboard) :
-    mkyu::DrawableObject(mkyu::vec2d{0.0, 0.0}),
+    mkyu::Object(mkyu::vector2d{0.0, 0.0}),
     m_keyboard(keyboard)
 {
     m_rect = std::make_shared<mkyu::Polygon<4>>(
-            mkyu::vec2d{0.0, 0.0},
-            std::array<mkyu::vec2d, 4>{{
-            mkyu::vec2d{-0.1, -0.1},
-            mkyu::vec2d{0.1, -0.1},
-            mkyu::vec2d{0.1, 0.1},
-            mkyu::vec2d{-0.1, 0.1}
+            mkyu::vector2d{0.0, 0.0},
+            std::array<mkyu::vector2d, 4>{{
+            mkyu::vector2d{-0.1, -0.1},
+            mkyu::vector2d{0.1, -0.1},
+            mkyu::vector2d{0.1, 0.1},
+            mkyu::vector2d{-0.1, 0.1}
             }},
             mkyu::Color{0, 100, 255, 255}
             );
     m_rect->blend(mkyu::Polygon<4>::BlendMode::Add);
 }
 
-void Player::draw() const {
-    m_rect->draw();
+void Player::update() {
     auto is_pushed = [this](mkyu::Keyboard::Type type) {
         return m_keyboard.state(type) == mkyu::Keyboard::State::Push;
     };
-    auto diff = mkyu::vec2d{0.0, 0.0};
+    auto diff = mkyu::vector2d{0.0, 0.0};
     if (is_pushed(mkyu::Keyboard::Type::Up))
         diff.y = 0.001;
     if (is_pushed(mkyu::Keyboard::Type::Down))
@@ -42,5 +41,9 @@ void Player::draw() const {
     if (is_pushed(mkyu::Keyboard::Type::Right))
         diff.x = 0.001;
     m_rect->position = m_rect->position + diff;
+}
+
+void Player::draw() const {
+    m_rect->draw();
 }
 

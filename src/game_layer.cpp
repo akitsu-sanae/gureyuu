@@ -13,12 +13,12 @@
 GameLayer::GameLayer(mkyu::Scene const& p) :
     mkyu::Layer(p)
 {
-    auto tri = std::make_shared<mkyu::Polygon<3>>(
-            mkyu::vec2d{0.0, 0.0},
-            std::array<mkyu::vec2d, 3>{{
-            mkyu::vec2d{0.0, -0.5},
-            mkyu::vec2d{0.5, 0.2},
-            mkyu::vec2d{-0.5, 0.2}}},
+    auto tri = std::make_shared<mkyu::Triangle>(
+            mkyu::vector2d{0.0, 0.0},
+            std::array<mkyu::vector2d, 3>{{
+            mkyu::vector2d{0.0, -0.5},
+            mkyu::vector2d{0.5, 0.2},
+            mkyu::vector2d{-0.5, 0.2}}},
             mkyu::Color{155, 255, 255, 155}
             );
     tri->blend(mkyu::Polygon<3>::BlendMode::Alpha);
