@@ -20,7 +20,7 @@ Shot::Shot(mkyu::vector2d const& pos) :
             }},
             mkyu::Color{0, 200, 100, 100}
             );
-    m_rect->blend(mkyu::Polygon<4>::BlendMode::Add);
+    m_rect->blend(mkyu::BlendMode::Add);
 }
 
 void Shot::update() {

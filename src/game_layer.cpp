@@ -21,7 +21,7 @@ GameLayer::GameLayer(mkyu::Scene const& p) :
             mkyu::vector2d{-0.5, 0.2}}},
             mkyu::Color{155, 255, 255, 155}
             );
-    tri->blend(mkyu::Polygon<3>::BlendMode::Alpha);
+    tri->blend(mkyu::BlendMode::Alpha);
     add_object(tri);
 
     m_player = std::make_shared<Player>(parent().parent().keyboard());

@@ -24,7 +24,7 @@ Player::Player(mkyu::Keyboard const& keyboard) :
             }},
             mkyu::Color{0, 100, 255, 255}
             );
-    m_rect->blend(mkyu::Polygon<4>::BlendMode::Add);
+    m_rect->blend(mkyu::BlendMode::Add);
 }
 
 void Player::update() {
