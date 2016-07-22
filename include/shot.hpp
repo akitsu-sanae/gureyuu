@@ -14,7 +14,7 @@
 
 struct Shot final : public mkyu::Object
 {
-    explicit Shot(mkyu::vector2d const&);
+    explicit Shot();
     void update() override;
     void draw() const override;
     bool is_alive() const {

@@ -7,16 +7,13 @@
 
 #include "shot.hpp"
 
-Shot::Shot(mkyu::vector2d const& pos) :
-    mkyu::Object(pos)
-{
-    m_rect = std::make_shared<mkyu::Polygon<4>>(
-            mkyu::vector2d{0.0, 0.0},
-            std::array<mkyu::vector2d, 4> {{
-            mkyu::vector2d{-0.05, -0.1},
-            mkyu::vector2d{0.05, -0.1},
-            mkyu::vector2d{0.05, 0.1},
-            mkyu::vector2d{-0.05, 0.1}
+Shot::Shot() {
+    m_rect = std::make_shared<mkyu::Rectangle>(
+            std::array<mkyu::vector3d, 4> {{
+            mkyu::vector3d{-0.05, -0.1, 0.0},
+            mkyu::vector3d{0.05, -0.1, 0.0},
+            mkyu::vector3d{0.05, 0.1, 0.0},
+            mkyu::vector3d{-0.05, 0.1, 0.0}
             }},
             mkyu::Color{0, 200, 100, 100}
             );
@@ -24,7 +21,7 @@ Shot::Shot(mkyu::vector2d const& pos) :
 }
 
 void Shot::update() {
-    m_rect->position = m_rect->position + mkyu::vector2d{0.0, 0.005};
+    m_rect->position = m_rect->position + mkyu::vector3d{0.0, 0.005, 0.0};
 }
 
 void Shot::draw() const {

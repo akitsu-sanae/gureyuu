@@ -14,11 +14,10 @@ GameLayer::GameLayer(mkyu::Scene const& p) :
     mkyu::Layer(p)
 {
     auto tri = std::make_shared<mkyu::Triangle>(
-            mkyu::vector2d{0.0, 0.0},
-            std::array<mkyu::vector2d, 3>{{
-            mkyu::vector2d{0.0, -0.5},
-            mkyu::vector2d{0.5, 0.2},
-            mkyu::vector2d{-0.5, 0.2}}},
+            std::array<mkyu::vector3d, 3>{{
+            mkyu::vector3d{0.0, -0.5, 0.0},
+            mkyu::vector3d{0.5, 0.2, 0.0},
+            mkyu::vector3d{-0.5, 0.2, 0.0}}},
             mkyu::Color{155, 255, 255, 155}
             );
     tri->blend(mkyu::BlendMode::Alpha);
@@ -31,7 +30,8 @@ GameLayer::GameLayer(mkyu::Scene const& p) :
 void GameLayer::on_update() {
     using namespace mkyu;
     if (this->parent().parent().keyboard().state(Keyboard::Type::Z) == Keyboard::State::Hold) {
-        auto shot = std::make_shared<Shot>(m_player->position());
+        auto shot = std::make_shared<Shot>();
+        shot->position = m_player->position;
         m_shots.push_back(shot);
         add_object(shot);
     }

@@ -23,9 +23,6 @@ struct Player : public mkyu::Object
 
     void draw() const override;
     void update() override;
-    mkyu::vector2d position() const {
-        return m_mesh->position;
-    }
 private:
     std::unique_ptr<mkyu::Mesh> m_mesh;
     mkyu::Keyboard const& m_keyboard;
