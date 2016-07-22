@@ -2,7 +2,10 @@
 自作ゲームエンジンmikayuuを使った例  
 
 # 使い方
-同じディレクトリにmikayuu(https://github.com/akitsu-sanae/mikayuu.git)とこれをcloneしてmikayuu->gureyuuの順にmakeする  
+* 同じディレクトリに [mikayuu](https://github.com/akitsu-sanae/mikayuu.git) とこれをcloneする
+* mikayuuの中でmake
+* gureyuuの中でmake run
+* 多分ビルドされてゲームが始まる
 
 
 # Copyright
