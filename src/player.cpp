@@ -14,17 +14,7 @@ Player::Player(mkyu::Keyboard const& keyboard) :
     mkyu::Object(mkyu::vector2d{0.0, 0.0}),
     m_keyboard(keyboard)
 {
-    m_rect = std::make_shared<mkyu::Polygon<4>>(
-            mkyu::vector2d{0.0, 0.0},
-            std::array<mkyu::vector2d, 4>{{
-            mkyu::vector2d{-0.1, -0.1},
-            mkyu::vector2d{0.1, -0.1},
-            mkyu::vector2d{0.1, 0.1},
-            mkyu::vector2d{-0.1, 0.1}
-            }},
-            mkyu::Color{0, 100, 255, 255}
-            );
-    m_rect->blend(mkyu::BlendMode::Add);
+    m_mesh = mkyu::Mesh::load("Resource/Mesh/player.mym");
 }
 
 void Player::update() {
@@ -40,10 +30,10 @@ void Player::update() {
         diff.x = -0.001;
     if (is_pushed(mkyu::Keyboard::Type::Right))
         diff.x = 0.001;
-    m_rect->position = m_rect->position + diff;
+    m_mesh->position = m_mesh->position + diff;
 }
 
 void Player::draw() const {
-    m_rect->draw();
+    m_mesh->draw();
 }
 
