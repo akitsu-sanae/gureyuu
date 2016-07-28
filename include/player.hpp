@@ -13,19 +13,17 @@
 
 #include <mikayuu/object.hpp>
 #include <mikayuu/mesh.hpp>
-#include <mikayuu/keyboard.hpp>
 #include <mikayuu/utility.hpp>
 
 
 struct Player : public mkyu::Object
 {
-    explicit Player(mkyu::Keyboard const&);
+    explicit Player();
 
     void draw() const override;
     void update() override;
 private:
     std::unique_ptr<mkyu::Mesh> m_mesh;
-    mkyu::Keyboard const& m_keyboard;
 };
 
 #endif

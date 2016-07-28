@@ -10,25 +10,25 @@
 
 #include "player.hpp"
 
-Player::Player(mkyu::Keyboard const& keyboard) :
-    m_keyboard(keyboard)
-{
+Player::Player() {
     m_mesh = mkyu::Mesh::load("Resource/Mesh/player.mym");
 }
 
 void Player::update() {
-    auto is_pushed = [this](mkyu::Keyboard::Type type) {
-        return m_keyboard.state(type) == mkyu::Keyboard::State::Push;
+    auto is_pushed = [this](mkyu::KeyType type) {
+        return mkyu::Keyboard::state(type) == mkyu::KeyState::Hold;
     };
     auto diff = mkyu::vector3d{};
-    if (is_pushed(mkyu::Keyboard::Type::Up))
+
+    if (is_pushed(mkyu::KeyType::Up))
         diff.y = 0.001;
-    if (is_pushed(mkyu::Keyboard::Type::Down))
+    if (is_pushed(mkyu::KeyType::Down))
         diff.y = -0.001;
-    if (is_pushed(mkyu::Keyboard::Type::Left))
+    if (is_pushed(mkyu::KeyType::Left))
         diff.x = -0.001;
-    if (is_pushed(mkyu::Keyboard::Type::Right))
+    if (is_pushed(mkyu::KeyType::Right))
         diff.x = 0.001;
+
     m_mesh->position = m_mesh->position + diff;
 }
 

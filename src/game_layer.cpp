@@ -23,13 +23,13 @@ GameLayer::GameLayer(mkyu::Scene const& p) :
     tri->blend(mkyu::BlendMode::Alpha);
     add_object(tri);
 
-    m_player = std::make_shared<Player>(parent().parent().keyboard());
+    m_player = std::make_shared<Player>();
     add_object(m_player);
 }
 
 void GameLayer::on_update() {
     using namespace mkyu;
-    if (this->parent().parent().keyboard().state(Keyboard::Type::Z) == Keyboard::State::Hold) {
+    if (mkyu::Keyboard::state(KeyType::Z) == KeyState::Hold) {
         auto shot = std::make_shared<Shot>();
         shot->position = m_player->position;
         m_shots.push_back(shot);
