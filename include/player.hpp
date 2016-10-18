@@ -5,25 +5,31 @@
   file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
 ============================================================================*/
 
-
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 
-#include <memory>
-
-#include <mikayuu/object.hpp>
 #include <mikayuu/mesh.hpp>
-#include <mikayuu/utility.hpp>
+#include <mikayuu/keyboard.hpp>
 
-
-struct Player : public mkyu::Object
+struct Player : public mkyu::Mesh
 {
-    explicit Player();
-
-    void draw() const override;
-    void update() override;
-private:
-    std::unique_ptr<mkyu::Mesh> m_mesh;
+    explicit Player() {
+        read_from_file("Resource/Mesh/player.mym");
+        position = mkyu::vector3d{};
+    }
+    void update() override {
+        using mkyu::Keyboard;
+        using mkyu::KeyState;
+        using mkyu::KeyType;
+        if (Keyboard::state(KeyType::Up) == KeyState::Hold)
+            position.y += 0.001;
+        if (Keyboard::state(KeyType::Down) == KeyState::Hold)
+            position.y -= 0.001;
+        if (Keyboard::state(KeyType::Left) == KeyState::Hold)
+            position.x -= 0.001;
+        if (Keyboard::state(KeyType::Right) == KeyState::Hold)
+            position.x += 0.001;
+    }
 };
 
 #endif

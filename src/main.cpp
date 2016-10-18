@@ -9,11 +9,12 @@
 #include "game_scene.hpp"
 
 int main() {
-    auto game = std::make_shared<Game>(mkyu::Game::Option{});
+    Game game{ mkyu::Game::Option{} };
+    game.change_scene(Scene::GameScene{ game });
 
-    while (game->is_alive()) {
-        game->update();
-        game->draw();
+    while (game.is_alive()) {
+        game.update();
+        game.draw();
     }
 }
 

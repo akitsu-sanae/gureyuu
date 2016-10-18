@@ -10,18 +10,17 @@
 #define GAME_LAYER_HPP
 
 #include <mikayuu/layer.hpp>
-#include <mikayuu/keyboard.hpp>
-#include <mikayuu/utility.hpp>
 
 #include "player.hpp"
-#include "shot.hpp"
 
 struct GameLayer : public mkyu::Layer {
-    explicit GameLayer(mkyu::Scene const&);
+    explicit GameLayer(mkyu::Scene const& scene) :
+        mkyu::Layer(scene)
+    {
+        add_object("player", std::make_shared<Player>());
+    }
 protected:
-    void on_update() override;
-    mkyu::ptr<Player> m_player;
-    mkyu::container<Shot> m_shots;
+    void on_update() override {}
 };
 
 #endif

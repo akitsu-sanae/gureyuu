@@ -12,8 +12,10 @@
 #include <mikayuu/game.hpp>
 
 struct Game : public mkyu::Game {
-    explicit Game(mkyu::Game::Option const&);
-    void on_update() override;
+    explicit Game(mkyu::Game::Option const& option) :
+        mkyu::Game(option)
+    {}
+    void on_update() override {}
 };
 
 #endif

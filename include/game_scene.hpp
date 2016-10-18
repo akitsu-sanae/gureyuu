@@ -11,10 +11,16 @@
 
 #include <mikayuu/scene.hpp>
 
+#include "game_layer.hpp"
+
 namespace Scene {
 
 struct GameScene : public mkyu::Scene {
-    GameScene(mkyu::Game const& p);
+    explicit GameScene(mkyu::Game const& game) :
+        mkyu::Scene(game)
+    {
+        add_layer("game", std::make_shared<GameLayer>(*this));
+    }
 protected:
     void on_update() override {}
 };
