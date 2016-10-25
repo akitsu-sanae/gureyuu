@@ -74,11 +74,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\local\glfw-3.2.bin.WIN32\include;../mikayuu;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\local\include\libpng\libpng;C:\local\include;C:\local\glfw-3.2.bin.WIN32\include;../mikayuu;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\local\glfw-3.2.bin.WIN32\lib-vc2015;../mikayuu/Debug</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3dll.lib;mikayuu.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\local\include\libpng\libpng\projects\vstudio\Release;C:\local\glfw-3.2.bin.WIN32\lib-vc2015;../mikayuu/Debug</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3dll.lib;mikayuu.lib;opengl32.lib;glu32.lib;libpng16.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -95,13 +95,13 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\local\glfw-3.2.bin.WIN32\include;../mikayuu;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\local\include\libpng\libpng;C:\local\include;C:\local\glfw-3.2.bin.WIN32\include;../mikayuu;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\local\glfw-3.2.bin.WIN32\lib-vc2015;../mikayuu/Release</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3dll.lib;mikayuu.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\local\include\libpng\libpng\projects\vstudio\Release;C:\local\glfw-3.2.bin.WIN32\lib-vc2015;../mikayuu/Release</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3dll.lib;mikayuu.lib;opengl32.lib;glu32.lib;libpng16.lib;zlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -122,6 +122,7 @@
     <ClInclude Include="include\game_layer.hpp" />
     <ClInclude Include="include\game_scene.hpp" />
     <ClInclude Include="include\player.hpp" />
+    <ClInclude Include="include\shot.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />

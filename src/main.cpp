@@ -8,9 +8,11 @@
 #include "game.hpp"
 #include "game_scene.hpp"
 
+int Shot::number = 0;
+
 int main() {
     Game game{ mkyu::Game::Option{} };
-    game.change_scene(Scene::GameScene{ game });
+    game.change_scene<Scene::GameScene>(game);
 
     while (game.is_alive()) {
         game.update();

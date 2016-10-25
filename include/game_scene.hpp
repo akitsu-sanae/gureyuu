@@ -19,7 +19,7 @@ struct GameScene : public mkyu::Scene {
     explicit GameScene(mkyu::Game const& game) :
         mkyu::Scene(game)
     {
-        add_layer("game", std::make_shared<GameLayer>(*this));
+        add_layer<GameLayer>(*this);
     }
 protected:
     void on_update() override {}

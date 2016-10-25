@@ -16,6 +16,7 @@ struct Player : public mkyu::Mesh
     explicit Player() {
         read_from_file("Resource/Mesh/player.mym");
         position = mkyu::vector3d{};
+        color = mkyu::color{120, 240, 240};
     }
     void update() override {
         using mkyu::Keyboard;
@@ -29,6 +30,10 @@ struct Player : public mkyu::Mesh
             position.x -= 0.001;
         if (Keyboard::state(KeyType::Right) == KeyState::Hold)
             position.x += 0.001;
+    }
+
+    bool is_alive() override {
+        return true;
     }
 };
 
