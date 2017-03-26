@@ -5,27 +5,18 @@
   file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
 ============================================================================*/
 
-
 #ifndef GAME_SCENE_HPP
 #define GAME_SCENE_HPP
 
 #include <mikayuu/scene.hpp>
-
 #include "game_layer.hpp"
 
-namespace Scene {
-
-struct GameScene : public mkyu::Scene {
-    explicit GameScene(mkyu::Game const& game) :
-        mkyu::Scene(game)
-    {
-        add_layer<GameLayer>(*this);
+struct GameScene final : public mkyu::Scene {
+    using mkyu::Scene::Scene;
+    void on_init() override {
+        add_layer<GameLayer>();
     }
-protected:
-    void on_update() override {}
 };
-
-}
 
 #endif
 

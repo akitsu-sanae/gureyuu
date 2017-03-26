@@ -4,12 +4,12 @@ CXXFLAGS = -Wall -Wextra -std=c++14 -O2
 
 LDFLAGS = -L../mikayuu/build/
 ifeq ($(OS), Windows_NT)
-	LIBS = -lmikayuu -lglfw3 -lopengl32 -lglu32
+	LIBS = -lmikayuu -lglfw -lopengl32 -lglu32
 else
-	LIBS = -lmikayuu -lglfw3 -lgl -lGLU
+	LIBS = -lmikayuu -lglfw -lGL -lGLU
 endif
 
-INCLUDE = -I./include
+INCLUDE = -I./include -I../mikayuu
 
 SRCDIR = ./src
 SRC = $(wildcard $(SRCDIR)/*.cpp)
@@ -20,13 +20,16 @@ TARGET = $(BUILD_DIR)/$(TARGET_NAME)
 OBJ = $(addprefix $(BUILD_DIR)/obj/, $(notdir $(SRC:.cpp=.o)))
 DEPEND = $(OBJ:.o=.d)
 
+all: $(TARGET)
+
+-include $(DEPEND)
 
 $(TARGET): $(OBJ)
 	$(CXX) -o $@ $^ $(LDFLAGS) $(LIBS)
 
 
 $(BUILD_DIR)/obj/%.o: $(SRCDIR)/%.cpp
-	$(CXX) $(CXXFLAGS) $(INCLUDE) -o $@ -c $<
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -o $@ -c -MMD -MP $<
 
 
 .PHONY: clean

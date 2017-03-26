@@ -11,11 +11,14 @@
 
 #include <mikayuu/game.hpp>
 
-struct Game : public mkyu::Game {
+struct Game final : public mkyu::Game {
     explicit Game(mkyu::Game::Option const& option) :
         mkyu::Game(option)
     {}
-    void on_update() override {}
+    void on_init() override {
+    }
+    void on_update() override {
+    }
 };
 
 #endif

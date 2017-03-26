@@ -9,27 +9,26 @@
 #define PLAYER_HPP
 
 #include <mikayuu/mesh.hpp>
-#include <mikayuu/keyboard.hpp>
 
-struct Player : public mkyu::Mesh
+struct Player final : public mkyu::Mesh
 {
-    explicit Player() {
-        read_from_file("Resource/Mesh/player.mym");
-        position = mkyu::vector3d{};
-        color = mkyu::color{120, 240, 240};
-    }
+    explicit Player() :
+        Mesh{"Resource/Mesh/bunny.obj"}
+    {}
     void update() override {
-        using mkyu::Keyboard;
+        position.x += 0.01;
+        /*
         using mkyu::KeyState;
         using mkyu::KeyType;
-        if (Keyboard::state(KeyType::Up) == KeyState::Hold)
-            position.y += 0.001;
-        if (Keyboard::state(KeyType::Down) == KeyState::Hold)
-            position.y -= 0.001;
-        if (Keyboard::state(KeyType::Left) == KeyState::Hold)
-            position.x -= 0.001;
-        if (Keyboard::state(KeyType::Right) == KeyState::Hold)
+        if (keyboard().state(KeyType::Left) == KeyState::Hold)
             position.x += 0.001;
+        if (keyboard().state(KeyType::Right) == KeyState::Hold)
+            position.x -= 0.001;
+        if (keyboard().state(KeyType::Up) == KeyState::Hold)
+            position.y += 0.001;
+        if (keyboard().state(KeyState::Down) == KeyState::Hold)
+            position.y -= 0.001;
+            */
     }
 
     bool is_alive() override {
